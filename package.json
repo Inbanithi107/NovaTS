@@ -1,0 +1,27 @@
+{
+  "name": "novats",
+  "version": "1.0.0",
+  "description": "A progressive Node framework for developing scalable server-side application in TypeScript",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsup"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Inbanithi107/NovaTS.git"
+  },
+  "keywords": [],
+  "author": "Inbanithi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Inbanithi107/NovaTS/issues"
+  },
+  "homepage": "https://github.com/Inbanithi107/NovaTS#readme",
+  "devDependencies": {
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3"
+  }
+}
