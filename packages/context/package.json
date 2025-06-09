@@ -1,0 +1,25 @@
+{
+  "name": "@nova-ts/context",
+  "version": "1.0.0",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^22.15.30",
+    "fast-glob": "^3.3.3",
+    "inversify": "^7.5.2",
+    "reflect-metadata": "^0.2.2"
+  }
+}
