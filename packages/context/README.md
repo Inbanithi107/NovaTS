@@ -113,7 +113,7 @@ Created by [Inbanithi107](https://github.com/Inbanithi107)
 
 ## 🌐 Repository
 
-[https://github.com/Inbanithi107](https://github.com/Inbanithi107)
+[https://github.com/Inbanithi107](https://github.com/Inbanithi107/NovaTS)
 
 ```
 
