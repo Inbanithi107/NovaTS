@@ -1,0 +1,1 @@
+export const BeanRegistry = new Map<string, any>();

@@ -1,0 +1,29 @@
+{
+  "name": "@nova-ts/context",
+  "version": "1.1.0",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsup"
+  },
+  "repository": {
+    "url": "https://github.com/Inbanithi107/NovaTS",
+    "type": "github"
+  },
+  "keywords": ["Nova", "Dependency Injection", "inversify", "context"],
+  "author": "Inbanithi",
+  "license": "MIT",
+  "type": "module",
+  "description": "A TypeScript library for Dependency Injection",
+  "devDependencies": {
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@types/node": "^22.15.30",
+    "fast-glob": "^3.3.3",
+    "inversify": "^7.5.2",
+    "reflect-metadata": "^0.2.2"
+  }
+}
