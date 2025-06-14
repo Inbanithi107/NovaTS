@@ -1,0 +1,41 @@
+{
+  "name": "@nova-ts/core",
+  "version": "1.0.0",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "url": "https://github.com/Inbanithi107/NovaTS",
+    "type": "github"
+  },
+  "scripts": {
+    "build": "tsup"
+  },
+  "keywords": [
+    "Nova",
+    "core",
+    "framework",
+    "express"
+  ],
+  "author": "Inbanithi",
+  "license": "MIT",
+  "type": "module",
+  "description": "A serverside framework used to build scalable application",
+  "devDependencies": {
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3",
+    "@nova-ts/context": "^1.1.0"
+  },
+  "dependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.0.1",
+    "express": "^5.1.0",
+    "reflect-metadata": "^0.2.2"
+    
+  },
+  "peerDependencies": {
+    "@nova-ts/context": "^1.1.0"
+  }
+}

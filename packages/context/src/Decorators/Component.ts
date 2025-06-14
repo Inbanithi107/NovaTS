@@ -16,6 +16,10 @@ export function Component(key?: any): ClassDecorator {
             injectable()(target);
         }
         const InjectionKey = key || target.name
+        if(typeof InjectionKey === 'string'){
+            ApplicationContext.bind(InjectionKey).to(target);
+            return;
+        }
         ApplicationContext.bind(InjectionKey).toSelf();
     }
 }
