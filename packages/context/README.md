@@ -12,7 +12,7 @@ A TypeScript library for global Dependency Injection (DI) designed for scalable 
 
 - ✅ **Decorator-based Context Management**  
 - ✅ **Constructor Injection with @AutoInject**  
-- 🔄 **Lifecycle Management (coming soon)**  
+- 🔄 **Lifecycle Management @PostConstruct**  
 - 🌐 **Global Module Scanning** for automatic binding  
 - 📦 **Minimal and Lightweight**
 
@@ -74,21 +74,28 @@ Make sure to run this **before** accessing any components through `ApplicationCo
 ## 📁 Project Structure Recommendation
 
 ```
-src/
-  └── main/
-        ├── Demo.ts
-        ├── Service.ts
-        └── index.ts        <- entry point with autoBind
+src
+├── App
+│   └── NovaApp
+│       ├── Component.ts
+│       ├── Service.ts
+│       └── Utils.ts
+├── index.ts  ← main entry point
+
 ```
 
 After building:
 
 ```
-dist/
-  └── main/
-        ├── Demo.js
-        ├── Service.js
-        └── index.js
+dist
+├── App
+│   └── NovaApp
+│       ├── Component.js
+│       ├── Service.js
+│       └── Utils.js
+├── index.js  ← main entry point
+
+        
 ```
 
 Then, bind using:
