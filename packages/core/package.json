@@ -1,6 +1,6 @@
 {
   "name": "@nova-ts/core",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
@@ -24,18 +24,19 @@
   "type": "module",
   "description": "A serverside framework used to build scalable application",
   "devDependencies": {
+    "@nova-ts/context": "^1.1.1",
+    "@types/glob-to-regexp": "^0.4.4",
     "tsup": "^8.5.0",
-    "typescript": "^5.8.3",
-    "@nova-ts/context": "^1.1.0"
+    "typescript": "^5.8.3"
   },
   "dependencies": {
     "@types/express": "^5.0.3",
     "@types/node": "^24.0.1",
     "express": "^5.1.0",
+    "glob-to-regexp": "^0.4.1",
     "reflect-metadata": "^0.2.2"
-    
   },
   "peerDependencies": {
-    "@nova-ts/context": "^1.1.0"
+    "@nova-ts/context": "^1.1.1"
   }
 }
