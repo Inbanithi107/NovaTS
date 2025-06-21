@@ -7,19 +7,25 @@ import { NovaConstant } from "../Constants/NovaConstants";
  * This class reads the metadata registered via `createParameterDecorator()` and,
  * during an incoming request, extracts the correct values from the `Request` object
  * and injects them into the controller method call.
- *rollerInstance.methodName(...args);
+ * controllerInstance.methodName(...args);
  *
  * @author Inbaithi107
  */
 export class NovaControllerResolver {
+
+    args!: any[];
+
+    setArgs(args: any[]){
+        this.args = args;
+    }
 
     /**
    * Resolves the method parameters by extracting metadata and values from the request.
    *
    * @param controllerClass - The controller class (or its prototype).
    * @param  route - The name of the method to resolve parameters for.
-   * @param  request - The current Express request object.
-   * @param  response - The current Express response object.
+   * @param  request - The current Nova request object.
+   * @param  response - The current Nova response object.
    * @param  next - The current Express next object.
    * @returns The resolved list of arguments to pass to the method.
    */
@@ -31,7 +37,7 @@ export class NovaControllerResolver {
         for(const param of paramMetaData){
             args[param.index] = param.resolver(Request, Response, next);
         }
-
+        this.setArgs(args);
         return args;
     }
 

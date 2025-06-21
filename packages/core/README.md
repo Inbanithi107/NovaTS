@@ -1,5 +1,8 @@
+Here’s the updated `README.md` for `@nova-ts/core`, now including the **new features** you’ve introduced — such as filters, response manipulation, `NovaFilterExecutor`, and more.
 
+---
 
+````markdown
 # @nova-ts/core
 
 > 🧩 Core runtime package for the NovaTS web framework — built for clean, decorator-driven TypeScript APIs on top of Express.
@@ -15,6 +18,10 @@
 - ✅ Runtime controller resolver
 - ✅ Express route binding via `HttpFactory`
 - ✅ Easy application bootstrap with `InitializeApplication`
+- ✅ Global and route-level filter support (`@Filter`)
+- ✅ Response transformation decorator (`@Response`)
+- ✅ Custom request pipeline via `NovaFilterExecutor`
+- ✅ Seamless controller invocation flow with `NovaControllerInvoker`
 
 ---
 
@@ -36,9 +43,15 @@ npm install @nova-ts/context
 
 ```ts
 // main.ts
-import { InitializeApplication } from '@nova-ts/core';
+import { autoBind } from "@nova-ts/context";
+import { ApplicationFactory } from "@nova-ts/core";
 
-InitializeApplication(3000);
+await autoBind("./dist/dev");
+
+const Application = new ApplicationFactory();
+Application.setPort(8080);
+await Application.InitializeApplication();
+Application.startApplication();
 ```
 
 ---
@@ -47,17 +60,21 @@ InitializeApplication(3000);
 
 ```ts
 // user.controller.ts
-import { Controller, GetMapping, PostMapping, PathVariable, Body } from '@nova-ts/core';
+import { Controller, GetMapping, PostMapping, PathVariable, Body, Filter, Response } from '@nova-ts/core';
+import { LoggerFilter } from './filters/logger.filter';
+import { MaskEmailResponse } from './responses/mask-email.response';
 
 @Controller('/users')
+@Filter(LoggerFilter)
 export class UserController {
-  @GetMapping('/:id')
+  @GetMapping('/{id}')
+  @Response(MaskEmailResponse)
   getUser(@PathVariable('id') id: string) {
-    return { id, name: 'John Doe' };
+    return { id, name: 'John Doe', email: 'john@example.com' };
   }
 
   @PostMapping('/')
-  createUser(@Body() user: any) {
+  createUser(@RequestBody() user: any) {
     return { success: true, data: user };
   }
 }
@@ -67,37 +84,24 @@ export class UserController {
 
 ## 🧩 Core API
 
-### `@Controller(path: string)`
+### Routing & Controllers
 
-Defines a controller with a base path.
+* `@Controller(path: string)` – Defines a controller with a base path.
+* `@GetMapping(path: string)` – Maps a method to a `GET` route.
+* `@PostMapping(path: string)` – Maps a method to a `POST` route.
 
-### `@GetMapping(path: string)`
+### Parameter Decorators
 
-Binds a method to a `GET` route.
+* `@PathVariable(name: string)` – Gets a URL path variable.
+* `@RequestParam(name: string)` – Gets a query parameter.
+* `@RequestBody()` – Gets the parsed request body.
+* `@RequestHeader(name: string)` – Gets a specific header.
+* `@Request()` – Gets the raw `Express.Request` object.
 
-### `@PostMapping(path: string)`
+### Filters and Response Mapping
 
-Binds a method to a `POST` route.
-
-### `@PathVariable(name: string)`
-
-Injects a URL path variable from `req.params`.
-
-### `@RequestParam(name: string)`
-
-Injects a query parameter from `req.query`.
-
-### `@Body()`
-
-Injects the request body (`req.body`).
-
-### `@RequestHeader(name: string)`
-
-Injects a specific request header.
-
-### `@Request()`
-
-Injects the raw `Express.Request` object.
+* `@Filter(FilterClass)` – Attaches a request filter to a controller or route.
+* `@Response(ResponseMapperClass)` – Maps the controller result to a custom response format.
 
 ---
 
@@ -105,11 +109,19 @@ Injects the raw `Express.Request` object.
 
 ### `HttpFactory(app: Express.Application)`
 
-Manually bind routes from controllers to an Express app instance.
+Binds controllers and routes dynamically to an Express instance.
 
 ### `NovaControllerResolver`
 
-Internally used to resolve controller method parameters using metadata.
+Internally used to map method parameters based on metadata.
+
+### `NovaControllerInvoker`
+
+Handles invocation of controller methods with resolved parameters.
+
+### `NovaFilterExecutor`
+
+Executes request filters and controls the flow of controller logic, enabling middleware-like extensibility.
 
 ---
 
@@ -136,5 +148,6 @@ MIT © 2025 Inbanithi107
 ```
 
 ---
+
 
 ```
