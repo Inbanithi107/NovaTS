@@ -6,7 +6,7 @@ import { NovaConstant } from '../Constants/NovaConstants';
 import { ConvertPath } from '../Utils/RequestPath';
 import { NovaControllerInvoker } from './NovaControllerInvoker';
 import { NovaFilterExecutor } from './NovaFilterExecutor';
-import { NovaRequest, NovaResponse } from '../abstract';
+import { NovaRequest, NovaResponse } from '../Abstract';
 
 /**
  * @class NovaRouteBinder

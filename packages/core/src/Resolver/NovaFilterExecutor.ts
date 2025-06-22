@@ -1,5 +1,5 @@
 import { ApplicationContext } from "@nova-ts/context";
-import { RequestFilter } from "../abstract";
+import { RequestFilter } from "../Abstract";
 import { NovaConstant } from "../Constants/NovaConstants";
 import { FilterMetaData } from "../Types";
 import { matchUriPatterns } from "../Utils/MatchPattern";

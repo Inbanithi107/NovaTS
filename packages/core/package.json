@@ -24,7 +24,7 @@
   "type": "module",
   "description": "A serverside framework used to build scalable application",
   "devDependencies": {
-    "@nova-ts/context": "^1.1.1",
+    "@nova-ts/context": "^1.1.2",
     "@types/glob-to-regexp": "^0.4.4",
     "tsup": "^8.5.0",
     "typescript": "^5.8.3"
@@ -37,6 +37,6 @@
     "reflect-metadata": "^0.2.2"
   },
   "peerDependencies": {
-    "@nova-ts/context": "^1.1.1"
+    "@nova-ts/context": "^1.1.2"
   }
 }
