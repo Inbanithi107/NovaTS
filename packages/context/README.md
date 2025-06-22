@@ -11,7 +11,8 @@ A TypeScript library for global Dependency Injection (DI) designed for scalable 
 ## ✨ Features
 
 - ✅ **Decorator-based Context Management**  
-- ✅ **Constructor Injection with @AutoInject**  
+- ✅ **Constructor Injection with @AutoInject**
+- ✅ **Proxy Instance for class and method**   
 - 🔄 **Lifecycle Management @PostConstruct**  
 - 🌐 **Global Module Scanning** for automatic binding  
 - 📦 **Minimal and Lightweight**
@@ -41,7 +42,7 @@ class Demo {
   }
 }
 
-@Component()
+@Component({proxy: true})
 class Service {
   constructor(@AutoInject("User") private user: User) {}
 
