@@ -31,7 +31,7 @@ export class ApplicationFactory {
     }
 
     public InitializeApplication(){
-        new NovaHttpFactory(Application).initializeRoute();
+        new NovaHttpFactory(Application).initializeRoute().initializeExceptionHandler();
         if(!this.port){
             this.port = 8080;
         }

@@ -1,5 +1,6 @@
 import express from 'express'
 import { NovaRouteBinder } from "../Resolver/NovaRouteBinder";
+import { NovaExceptionResolver } from '../Resolver/NovaExceptionResolver';
 
 /**
  * @class HttpFactory
@@ -27,6 +28,14 @@ export class NovaHttpFactory {
     public initializeRoute(){
         const binder = new NovaRouteBinder(this.app);
         binder.bindAllControllers();
+        return this;
+    }
+
+    public initializeExceptionHandler(){
+        this.app.use((err: any, req: any, res: any, next: any)=>{
+            NovaExceptionResolver.resolve(err,req,res);
+        });
+        return this;
     }
 
 }
