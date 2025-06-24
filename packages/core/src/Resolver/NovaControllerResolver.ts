@@ -1,4 +1,5 @@
 import { NovaConstant } from "../Constants/NovaConstants";
+import { coerceArgs } from "../Utils/NovaMessageConverter";
 
 /**
  * Responsible for resolving controller method parameters at runtime based on
@@ -31,6 +32,7 @@ export class NovaControllerResolver {
    */
     public resolveArgument(instance: any,route: any,Request: any, Response: any, next: any): any[]{
         const paramMetaData = Reflect.getMetadata(NovaConstant.ControllerParameter, instance, route.handlerName) || [];
+        const paramtypes = Reflect.getMetadata("design:paramtypes", instance,route.handlerName) || [];
         
         const args: any[] = [];
 
@@ -38,7 +40,8 @@ export class NovaControllerResolver {
             args[param.index] = param.resolver(Request, Response, next);
         }
         this.setArgs(args);
-        return args;
+        const resolvedargs = coerceArgs(args,paramtypes);
+        return resolvedargs;
     }
 
 }
