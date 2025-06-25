@@ -24,22 +24,6 @@ export function coerceArgs(args: any[], paramTypes: Function[]): any[] {
             return arg;
         }
 
-        
-        if (typeof Type === 'function') {
-            if (arg instanceof Type) return arg;
-
-           
-            if (typeof arg === 'object') {
-                return instantiateClass(Type as any, arg);
-            }
-
-            try {
-                return new (Type as any)(arg); 
-            } catch (err) {
-                throw new Error(`Cannot instantiate ${Type.name} with value at position ${index}`);
-            }
-        }
-
         return arg; 
     });
 }

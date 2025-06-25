@@ -50,7 +50,7 @@ export class NovaRouteBinder {
 
           try {
             const controllerInvoker = new NovaControllerInvoker(instance, route, handler, this.resolver);
-            await new NovaFilterExecutor().execute(Request, Response, () => controllerInvoker.invoke(Request, Response, next));
+            await new NovaFilterExecutor().execute(Request, Response, async() => controllerInvoker.invoke(Request, Response, next));
             Response.json(Response.body);
           } catch (error) {
             console.error(`[ERROR] in ${route.method.toUpperCase()} ${fullPath}:`, error);

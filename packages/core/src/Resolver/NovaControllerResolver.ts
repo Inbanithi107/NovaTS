@@ -37,7 +37,7 @@ export class NovaControllerResolver {
         const args: any[] = [];
 
         for(const param of paramMetaData){
-            args[param.index] = param.resolver(Request, Response, next);
+            args[param.index] = param.resolver(Request, Response, next, paramtypes[param.index]);
         }
         this.setArgs(args);
         const resolvedargs = coerceArgs(args,paramtypes);
