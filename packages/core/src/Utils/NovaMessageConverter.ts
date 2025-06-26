@@ -1,4 +1,4 @@
-import { instantiateClass } from "./ObjectWrapper";
+
 
 export function coerceArgs(args: any[], paramTypes: Function[]): any[] {
     return args.map((arg, index) => {
