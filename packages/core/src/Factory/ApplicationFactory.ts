@@ -1,6 +1,7 @@
 import express from "express";
 import { NovaHttpFactory } from "./NovaHttpFactory";
 import { ConfigLoader } from "../Utils/ConfigLoader";
+import { ProprtyResolver } from "../Resolver/PropertyResolver";
 
 const Application = express();
 Application.use(express.json());
@@ -33,6 +34,7 @@ export class ApplicationFactory {
 
     public InitializeApplication(){
         ConfigLoader.load();
+        ProprtyResolver.loadAllProperties();
         new NovaHttpFactory(Application).initializeRoute().initializeExceptionHandler();
         if(!this.port){
             this.port = 8080;

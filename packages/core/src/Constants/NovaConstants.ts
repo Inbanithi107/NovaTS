@@ -6,5 +6,6 @@ export const NovaConstant = {
     ControllerParameter: "nova:controllerparam",
     NovaFilterMeta: "nova:filtermeta",
     NovaFilter: "nova:filter",
-    NovaRequestHolder: "nova:requestholder"
+    NovaRequestHolder: "nova:requestholder",
+    NovaValueMeta: "nova:valuemeta"
 }
