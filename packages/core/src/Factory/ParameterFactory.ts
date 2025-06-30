@@ -12,7 +12,7 @@ import { ParamSourceType } from "../Types/ParamSourceType";
  * @returns {ParameterDecorator} The parameter decorator function.
  * @author Inbaithi107
  */
-export function createParameterDecorator(resolver: (req: any,res: any,next: any)=> any): ParameterDecorator{
+export function createParameterDecorator(resolver: (req: any,res: any,next: any, type?: any)=> any): ParameterDecorator{
     return (target: any, propertyKey: any, parameterIndex: number) => {
         const existing = Reflect.getMetadata(NovaConstant.ControllerParameter, target, propertyKey) || [];
         existing.push({

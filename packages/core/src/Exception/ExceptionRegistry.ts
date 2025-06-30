@@ -1,0 +1,1 @@
+export const ExceptionRegistry = new Map<any, {constructor: any, method: Function}>;

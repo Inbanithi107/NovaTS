@@ -1,13 +1,7 @@
 import express from "express";
-import { HttpFactory } from "./HttpFactory";
-import { ApplicationContext } from "@nova-ts/context";
-
-
-export class ApplicationFactory {
-    setcontext(context: any){
-        ApplicationContext.load(context);
-    }
-}
+import { NovaHttpFactory } from "./NovaHttpFactory";
+import { ConfigLoader } from "../Utils/ConfigLoader";
+import { ProprtyResolver } from "../Resolver/PropertyResolver";
 
 const Application = express();
 Application.use(express.json());
@@ -23,24 +17,33 @@ Application.use(express.json());
  * InitializeApplication(3000);
  * ```
  *
- * @param {number} port - The port number on which the application should listen.
+ * port - The port number on which the application should listen.
  * @returns {void | Promise<void>} Starts the server after all configurations are complete.
  * @author Inbaithi107
  * @requires ```@nova-ts/context``` installed in the application
  */
-export async function InitializeApplication(port?: number){
+export class ApplicationFactory {
 
     
 
-    HttpFactory(Application);
+    port!: number;
 
-    
+    setPort(port: number){
+        this.port = port;
+    }
 
-    const listeningPort = port || 8080;
+    public InitializeApplication(){
+        ConfigLoader.load();
+        ProprtyResolver.loadAllProperties();
+        new NovaHttpFactory(Application).initializeRoute().initializeExceptionHandler();
+        if(!this.port){
+            this.port = 8080;
+        }
+    }
 
-
-    Application.listen(listeningPort, ()=>{
-        console.log(`Application started on the ${port==null?"Deafult port 8080": `port ${port}`}`);
+    public startApplication(){
+        Application.listen(this.port, ()=>{
+        console.log(`Application started on the port : ${this.port}`);
     });
-
+    }
 }
