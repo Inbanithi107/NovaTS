@@ -1,5 +1,11 @@
 import { ApplicationContext } from "../Container/ApplicationContext";
-import { BeanRegistry } from "../Container/BeanRegistry";
+
+
+
+export type BeanOptions = {
+    key?: any,
+    lazy?: boolean
+}
 
 /**
  * 
@@ -9,18 +15,31 @@ import { BeanRegistry } from "../Container/BeanRegistry";
  * @description It excutes the method and store the result of the method in the ApplicationContext
  * @type MethodDecorator
  */
-export function Bean(key?: any): MethodDecorator {
+export function Bean(options?: BeanOptions): MethodDecorator {
     return function(target: any, propertyKey: string|symbol, descriptor: PropertyDescriptor){
+        const lazy = options?.lazy || false;
         const method = descriptor.value;
+        if(!(lazy)){
         const beanInstance = method.apply(null);
         if(!beanInstance || typeof beanInstance !=="object"){
             throw new Error(`@Bean: Method '${String(propertyKey)}' did not return an object`);
         }
-        const clazzType = key || beanInstance.constructor.name
+        const clazzType = options?.key || beanInstance.constructor.name
         
         if(ApplicationContext.isBound(clazzType)){
             ApplicationContext.unbind(clazzType)
         }
         ApplicationContext.bind(clazzType).toConstantValue(beanInstance);
+    }else{
+        const returnType = Reflect.getMetadata("design:returntype", target, propertyKey);
+        const clazzType = options?.key || String(returnType.name);
+        ApplicationContext.bind(clazzType).toDynamicValue((context)=>{
+            const beanInstance = method.apply(null);
+            if(!beanInstance || typeof beanInstance !=="object"){
+                throw new Error(`@Bean: Method '${String(propertyKey)}' did not return an object`);
+            }
+            return beanInstance;
+        }).inSingletonScope();
+    }
     }
 }
