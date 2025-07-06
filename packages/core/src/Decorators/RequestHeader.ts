@@ -15,7 +15,7 @@ import { createParameterDecorator } from "../Factory";
  *
  * @param {string} name - The name of the header to retrieve (case-insensitive).
  * @returns {ParameterDecorator} The parameter decorator function.
- * @author Inbaithi107
+ * @author Inbanithi107
  */
 export function RequestHeader(key: string): ParameterDecorator {
     return createParameterDecorator((req,res,next)=>{

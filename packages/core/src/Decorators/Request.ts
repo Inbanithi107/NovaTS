@@ -15,7 +15,7 @@ import { createParameterDecorator } from "../Factory";
  * ```
  *
  * @returns {ParameterDecorator} The parameter decorator function.
- * @author Inbaithi107
+ * @author Inbanithi107
  */
 export function Requset(): ParameterDecorator{
     return createParameterDecorator((req,res,next)=>{

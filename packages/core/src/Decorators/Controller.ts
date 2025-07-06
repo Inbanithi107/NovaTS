@@ -3,7 +3,7 @@ import { NovaConstant } from "../Constants/NovaConstants";
 /**
  * It is used to decorate class which interact with api request
  * @description It takes base path ""
- * @author Inbaithi107
+ * @author Inbanithi107
  */
 export function Controller(): ClassDecorator;
 

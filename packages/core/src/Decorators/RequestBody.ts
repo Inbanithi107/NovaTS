@@ -17,7 +17,7 @@ import { ConfigLoader } from "../Utils";
  * ```
  *
  * @returns {ParameterDecorator} The parameter decorator function.
- * @author Inbaithi107
+ * @author Inbanithi107
  */
 export function RequestBody(): ParameterDecorator {
     return createParameterDecorator((req,res,next,type?: any)=>{
