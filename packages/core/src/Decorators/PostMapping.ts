@@ -19,7 +19,7 @@ import { HttpMethods } from "../Types/HttpMethods"
  *
  * @param {string} path - The URL path for the POST endpoint, relative to the controller's base path.
  * @returns {MethodDecorator} The method decorator function.
- * @author Inbaithi107
+ * @author Inbanithi107
  */
 export function PostMapping(path: string): MethodDecorator {
     return function(target: any, propertyKey: string|symbol, descriptor: PropertyDescriptor){

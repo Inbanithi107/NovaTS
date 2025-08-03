@@ -10,7 +10,7 @@ import { coerceArgs } from "../Utils/NovaMessageConverter";
  * and injects them into the controller method call.
  * controllerInstance.methodName(...args);
  *
- * @author Inbaithi107
+ * @author Inbanithi107
  */
 export class NovaControllerResolver {
 

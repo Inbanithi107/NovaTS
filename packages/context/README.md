@@ -12,7 +12,8 @@ A TypeScript library for global Dependency Injection (DI) designed for scalable 
 
 - ✅ **Decorator-based Context Management**  
 - ✅ **Constructor Injection with @AutoInject**
-- ✅ **Proxy Instance for class and method**   
+- ✅ **Proxy Instance for class and method**
+- ✅ **Lazy initialization of Bean Method**   
 - 🔄 **Lifecycle Management @PostConstruct**  
 - 🌐 **Global Module Scanning** for automatic binding  
 - 📦 **Minimal and Lightweight**
@@ -36,7 +37,7 @@ import { Component, Bean, AutoInject, ApplicationContext } from "@nova-ts/contex
 
 @Component()
 class Demo {
-  @Bean("User")
+  @Bean({key: "User", lazy: true})
   setuser() {
     return new User("JohnDoe", "1234");
   }

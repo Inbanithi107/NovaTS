@@ -19,7 +19,7 @@ import { createParameterDecorator } from "../Factory";
  *
  * @param {string} name - The name of the query parameter to extract.
  * @returns {ParameterDecorator} The parameter decorator function.
- * @author Inbaithi107
+ * @author Inbanithi107
  */
 export function RequestParam(key: string): ParameterDecorator{
     return createParameterDecorator((req,res,next)=>{

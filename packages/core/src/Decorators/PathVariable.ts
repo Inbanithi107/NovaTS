@@ -13,7 +13,7 @@ import { createParameterDecorator } from "../Factory"
  *
  * @param {string} name - The name of the path variable to extract from the request URL.
  * @returns {ParameterDecorator} The parameter decorator function.
- * @author Inbaithi107
+ * @author Inbanithi107
  */
 export function PathVariable(name: string): ParameterDecorator {
     return createParameterDecorator((Request: any, Response: any, next: any) => {

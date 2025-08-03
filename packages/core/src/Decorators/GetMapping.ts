@@ -7,7 +7,7 @@ import { HttpMethods } from "../Types/HttpMethods";
  * @param path The path used to map URI to a method
  * @description The method applied with this decorator is dynamically
  * applied with Express Request and Response and the result is send as json
- * @author Inbaithi107
+ * @author Inbanithi107
  */
 export function GetMapping(path: string): MethodDecorator {
     return function(target: any, propertyKey: string|symbol, descriptor: PropertyDescriptor){

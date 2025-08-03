@@ -10,7 +10,7 @@ import { ParamSourceType } from "../Types/ParamSourceType";
  *
  * @param { (req: Request) => any} extractorFactory - A factory that takes a parameter name and returns a function that extracts the value from the request.
  * @returns {ParameterDecorator} The parameter decorator function.
- * @author Inbaithi107
+ * @author Inbanithi107
  */
 export function createParameterDecorator(resolver: (req: any,res: any,next: any, type?: any)=> any): ParameterDecorator{
     return (target: any, propertyKey: any, parameterIndex: number) => {
