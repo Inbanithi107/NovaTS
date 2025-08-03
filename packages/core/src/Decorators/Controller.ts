@@ -12,7 +12,7 @@ export function Controller(): ClassDecorator;
  * 
  * @param basePath The path used to map request to the controller
  * @description It is used to map controller with path
- * @author Inbaithi107
+ * @author Inbanithi107
  */
 export function Controller(basePath: string): ClassDecorator;
 
